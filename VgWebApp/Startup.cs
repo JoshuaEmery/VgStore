@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using VgWebApp.Data;
 
 namespace VgWebApp
 {
@@ -15,6 +16,11 @@ namespace VgWebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //this registers the fakeproductrepository to the services collection
+            //which makes it available via dependency injection.
+            //Using addtransient means that a new FakeRepository object is created for
+            //each request.
+            services.AddTransient<IProductRepository, FakeProductRepository>();
             //this adds the MVC service to the services collection
             services.AddMvc();
         }
