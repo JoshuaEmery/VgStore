@@ -12,6 +12,8 @@ namespace VgWebApp.Controllers
     {
         //create a field of type IProductRepository
         private IProductRepository repository;
+        //Why this is capitalized I do not know
+        public int PageSize = 4;
         public ProductController(IProductRepository repo)
         {
             //When this constructor runs it will request an instance
@@ -22,11 +24,22 @@ namespace VgWebApp.Controllers
         }
         //This statement will render a view of the name List.cshtml
         //and send it an Iqueryable of Product as the model
-        public ViewResult List() => View(repository.Products);
+        //By specifying a default parameter 1 will be used if no
+        //parameter is given. The stament below first Orders all of the
+        //products by Id, then it skips forward past theproducts
+        //that would not be listed on that product page, then takes the
+        //number of products specified in PageSize
+        public ViewResult List(int productPage = 1) 
+            => View(repository.Products
+                .OrderBy(p => p.ProductID)
+                .Skip((productPage -1) * PageSize)
+                .Take(PageSize));
         //The above statement is equvalent to the statement below
         //public ViewResult List()
         //{
-        //    IQueryable<Product> products = repository.Products;
+        //    IQueryable<Product> products = repository.Products.OrderBy(p => p.ProductID)
+        //        .Skip((productPage -1) * PageSize)
+        //        .Take(PageSize));;
         //    return View(products);
         //}
 
