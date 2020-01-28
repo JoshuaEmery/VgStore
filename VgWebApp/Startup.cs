@@ -7,20 +7,33 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using VgWebApp.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace VgWebApp
 {
     public class Startup
     {
+        //Startup constructor which pulls in a configuration file
+        //via DI, it pulls the configuration from appsettings.json
+        public Startup(IConfiguration configuration) =>
+            Configuration = configuration;
+        //This object will store the appsettings and be available to the
+        //rest of the startup class
+        public IConfiguration Configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //this registers the fakeproductrepository to the services collection
-            //which makes it available via dependency injection.
-            //Using addtransient means that a new FakeRepository object is created for
-            //each request.
-            services.AddTransient<IProductRepository, FakeProductRepository>();
+            //This adds the dbcontext to the services and configures the
+            //options to UseSqlServer as well as pulls data from the 
+            //appsettings.json regarding the connection string
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration["Data:SportStoreProducts:ConnectionString"]));
+            //Any constructor in the project can not request an IProductRepository
+            //and it will be given an object of type EFProductRepository
+            services.AddTransient<IProductRepository, EFProductRepository>();
             //this adds the MVC service to the services collection
             services.AddMvc();
         }
