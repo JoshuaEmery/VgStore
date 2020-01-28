@@ -30,7 +30,7 @@ namespace VgWebApp
             //appsettings.json regarding the connection string
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration["Data:SportStoreProducts:ConnectionString"]));
+                    Configuration["Data:VgStoreProducts:ConnectionString"]));
             //Any constructor in the project can not request an IProductRepository
             //and it will be given an object of type EFProductRepository
             services.AddTransient<IProductRepository, EFProductRepository>();
