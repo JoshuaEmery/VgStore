@@ -35,8 +35,11 @@ namespace VgWebApp
             app.UseStatusCodePages();
             //This allows static files to be served from wwwroot
             app.UseStaticFiles();
-            //This is where a default path would be configured
+            //This sets the default pad to /Product/List
             app.UseMvc(routes => {
+                routes.MapRoute(
+                name: "default",
+                template: "{controller=Product}/{action=List}/{id?}");
             });
         }
     }
