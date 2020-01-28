@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using VgWebApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using VgWebApp.Models;
 
 namespace VgWebApp
 {
@@ -54,6 +55,10 @@ namespace VgWebApp
                 name: "default",
                 template: "{controller=Product}/{action=List}/{id?}");
             });
+            //Send the app object to the ensure populated method.
+            //This whill check to see if there is data in the database, if
+            //not then it will seed it with data
+            SeedData.EnsurePopulated(app);
         }
     }
 }
