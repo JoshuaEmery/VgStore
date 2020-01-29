@@ -3,12 +3,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Moq;
+using VgWebApp.Data;
 using VgWebApp.Infrastructure;
 using VgWebApp.Models.ViewModels;
 using Xunit;
+using Moq;
 
-namespace SportsStore.Tests
+namespace VgWebApp.Tests
 {
 
     public class PageLinkTagHelperTests

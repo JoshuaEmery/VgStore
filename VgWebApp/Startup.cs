@@ -52,8 +52,9 @@ namespace VgWebApp
             //This sets the default pad to /Product/List
             app.UseMvc(routes => {
                 routes.MapRoute(
-                name: "default",
-                template: "{controller=Product}/{action=List}/{id?}");
+                name: "pagination",
+                template: "Products/Page{productPage}",
+                defaults: new { Controller = "Product", action = "List" });
             });
             //Send the app object to the ensure populated method.
             //This whill check to see if there is data in the database, if
