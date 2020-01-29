@@ -55,6 +55,9 @@ namespace VgWebApp
                 name: "pagination",
                 template: "Products/Page{productPage}",
                 defaults: new { Controller = "Product", action = "List" });
+                routes.MapRoute(
+                name: "default",
+                template: "{controller=Product}/{action=List}/{id?}");
             });
             //Send the app object to the ensure populated method.
             //This whill check to see if there is data in the database, if
