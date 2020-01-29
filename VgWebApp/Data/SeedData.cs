@@ -18,68 +18,68 @@ namespace VgWebApp.Data
                 context.Products.AddRange(
                 new Product
                 {
-                    Name = "Kayak",
-                    Description = "A boat for one person",
-                    Category = "Watersports",
-                    Price = 275
+                    Name = "Mortal Kombat",
+                    Description = "Violent",
+                    Category = "Fighting",
+                    Price = 59.99m
                 },
                 new Product
                 {
-                    Name = "Lifejacket",
-                    Description = "Protective and fashionable",
-                    Category = "Watersports",
-                    Price = 48.95m
+                    Name = "Starcraft",
+                    Description = "Warcraft in space",
+                    Category = "Strategy",
+                    Price = 49.95m
                 },
                 new Product
                 {
-                    Name = "Soccer Ball",
-                    Description = "FIFA-approved size and weight",
-                    Category = "Soccer",
-                    Price = 19.50m
-                },
-                new Product
-                {
-                    Name = "Corner Flags",
-                    Description = "Give your playing field a professional touch",
-                    Category = "Soccer",
-                    Price = 34.95m
-                },
-                new Product
-                {
-                    Name = "Stadium",
-                    Description = "Flat-packed 35,000-seat stadium",
-                    Category = "Soccer",
-                    Price = 79500
-                },
-                new Product
-                {
-                    Name = "Thinking Cap",
-                    Description = "Improve brain efficiency by 75%",
-                    Category = "Chess",
-                    Price = 16
-                },
-                new Product
-                {
-                    Name = "Unsteady Chair",
-                    Description = "Secretly give your opponent a disadvantage",
-                    Category = "Chess",
+                    Name = "Half-Life",
+                    Description = "Aliens and science",
+                    Category = "Shooter",
                     Price = 29.95m
                 },
                 new Product
                 {
-                    Name = "Human Chess Board",
-                    Description = "A fun game for the family",
-                    Category = "Chess",
-                    Price = 75
+                    Name = "Super Meat Boy",
+                    Description = "Boy of meat jumping",
+                    Category = "Platformer",
+                    Price = 19.95m
                 },
                 new Product
                 {
-                    Name = "Bling-Bling King",
-                    Description = "Gold-plated, diamond-studded King",
+                    Name = "New Japan All Stars 4",
+                    Description = "Baseball star dating simulator",
+                    Category = "Adult",
+                    Price = 19.95m
+                },
+                new Product
+                {
+                    Name = "Puzzle Bobble",
+                    Description = "Cute girls will play this with you",
+                    Category = "Puzzke",
+                    Price = 9.95m
+                },
+                new Product
+                {
+                    Name = "Unsteady Chair",
+                    Description = "The chair could fall over at any moment",
+                    Category = "Puzzle",
+                    Price = 29.95m
+                },
+                new Product
+                {
+                    Name = "Battle Chess",
+                    Description = "An attempt to make chess exciting",
                     Category = "Chess",
-                    Price = 1200
+                    Price = 15.99m
+                },
+                new Product
+                {
+                    Name = "King Kong's Hawaiian Vacation",
+                    Description = "King Kong sitting on a beach",
+                    Category = "Simulation",
+                    Price = 5.99m
                 }
-                );
+                ) ;
                 context.SaveChanges();
             }
         }
