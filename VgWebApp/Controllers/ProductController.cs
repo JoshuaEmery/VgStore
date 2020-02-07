@@ -36,6 +36,10 @@ namespace VgWebApp.Controllers
                     TotalItems = repository.Products.Count()
                 }
             });
+        public JsonResult JsonProducts()
+        {
+            return Json(repository.Products);
+        }
 
         //This statement will render a view of the name List.cshtml
         //and send it an Iqueryable of Product as the model

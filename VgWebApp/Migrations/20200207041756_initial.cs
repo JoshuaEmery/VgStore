@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace VgWebApp.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,10 @@ namespace VgWebApp.Migrations
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
-                    Category = table.Column<string>(nullable: true)
+                    Genre = table.Column<string>(nullable: true),
+                    Multiplayer = table.Column<bool>(nullable: false),
+                    Rating = table.Column<int>(nullable: false),
+                    ESRB = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -24,13 +24,19 @@ namespace VgWebApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Category");
-
                     b.Property<string>("Description");
+
+                    b.Property<string>("ESRB");
+
+                    b.Property<string>("Genre");
+
+                    b.Property<bool>("Multiplayer");
 
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
+
+                    b.Property<int>("Rating");
 
                     b.HasKey("ProductID");
 

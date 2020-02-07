@@ -20,64 +20,91 @@ namespace VgWebApp.Data
                 {
                     Name = "Mortal Kombat",
                     Description = "Violent",
-                    Category = "Fighting",
-                    Price = 59.99m
+                    Genre = "Fighting",
+                    Price = 59.99m,
+                    ESRB = "Mature",
+                    Rating = 90,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "Starcraft",
                     Description = "Warcraft in space",
-                    Category = "Strategy",
-                    Price = 49.95m
+                    Genre = "Strategy",
+                    Price = 49.95m,
+                    ESRB = "Teen",
+                    Rating = 95,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "Half-Life",
                     Description = "Aliens and science",
-                    Category = "Shooter",
-                    Price = 29.95m
+                    Genre = "Shooter",
+                    Price = 29.95m,
+                    ESRB = "Teen",
+                    Rating = 99,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "Super Meat Boy",
                     Description = "Boy of meat jumping",
-                    Category = "Platformer",
-                    Price = 19.95m
+                    Genre = "Platformer",
+                    Price = 19.95m,
+                    ESRB = "Kids",
+                    Rating = 85,
+                    Multiplayer = false
                 },
                 new Product
                 {
                     Name = "New Japan All Stars 4",
                     Description = "Baseball star dating simulator",
-                    Category = "Adult",
-                    Price = 19.95m
+                    Genre = "Adult",
+                    Price = 19.95m,
+                    ESRB = "Mature",
+                    Rating = 67,
+                    Multiplayer = false
                 },
                 new Product
                 {
                     Name = "Puzzle Bobble",
                     Description = "Cute girls will play this with you",
-                    Category = "Puzzke",
-                    Price = 9.95m
+                    Genre = "Puzzle",
+                    Price = 9.95m,
+                    ESRB = "Kids",
+                    Rating = 75,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "Unsteady Chair",
                     Description = "The chair could fall over at any moment",
-                    Category = "Puzzle",
-                    Price = 29.95m
+                    Genre = "Puzzle",
+                    Price = 29.95m,
+                    ESRB = "Kids",
+                    Rating = 72,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "Battle Chess",
                     Description = "An attempt to make chess exciting",
-                    Category = "Chess",
-                    Price = 15.99m
+                    Genre = "Chess",
+                    Price = 15.99m,
+                    ESRB = "Teen",
+                    Rating = 82,
+                    Multiplayer = true
                 },
                 new Product
                 {
                     Name = "King Kong's Hawaiian Vacation",
                     Description = "King Kong sitting on a beach",
-                    Category = "Simulation",
-                    Price = 5.99m
+                    Genre = "Simulation",
+                    Price = 5.99m,
+                    ESRB = "Teen",
+                    Rating = 100,
+                    Multiplayer = true
                 }
                 ) ;
                 context.SaveChanges();

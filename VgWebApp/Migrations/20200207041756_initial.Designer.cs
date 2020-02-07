@@ -9,8 +9,8 @@ using VgWebApp.Data;
 namespace VgWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200128022943_Initial")]
-    partial class Initial
+    [Migration("20200207041756_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,13 +26,19 @@ namespace VgWebApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Category");
-
                     b.Property<string>("Description");
+
+                    b.Property<string>("ESRB");
+
+                    b.Property<string>("Genre");
+
+                    b.Property<bool>("Multiplayer");
 
                     b.Property<string>("Name");
 
                     b.Property<decimal>("Price");
+
+                    b.Property<int>("Rating");
 
                     b.HasKey("ProductID");
 
