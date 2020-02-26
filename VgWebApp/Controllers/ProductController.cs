@@ -23,19 +23,25 @@ namespace VgWebApp.Controllers
             //and assign it to our repository field.
             repository = repo;
         }
-        public ViewResult List(int productPage = 1) => View(new ProductsListViewModel
-        {
-                Products = repository.Products
-                    .OrderBy(p => p.ProductID)
-                    .Skip((productPage - 1) * PageSize)
-                    .Take(PageSize),
-                PagingInfo = new PagingInfo
-                {
-                    CurrentPage = productPage,
-                    ItemsPerPage = PageSize,
-                    TotalItems = repository.Products.Count()
-                }
-            });
+        public ViewResult List(string genre, int productPage = 1)
+             => View(new ProductsListViewModel
+             {
+                 Products = repository.Products
+                     .Where(p => genre == null || p. Genre == genre)
+                     .OrderBy(p => p.ProductID)
+                     .Skip((productPage - 1) * PageSize)
+                     .Take(PageSize),
+                 PagingInfo = new PagingInfo
+                 {
+                     CurrentPage = productPage,
+                     ItemsPerPage = PageSize,
+                     TotalItems = genre == null ?
+                        repository.Products.Count() :
+                        repository.Products.Where(e =>
+                        e.Genre == genre).Count()
+                 },
+                 CurrentGenre = genre
+             });
         public JsonResult JsonProducts()
         {
             return Json(repository.Products);

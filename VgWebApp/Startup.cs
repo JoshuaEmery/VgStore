@@ -50,14 +50,46 @@ namespace VgWebApp
             //This allows static files to be served from wwwroot
             app.UseStaticFiles();
             //This sets the default pad to /Product/List
-            app.UseMvc(routes => {
+            //app.UseMvc(routes => {
+            //    routes.MapRoute(
+            //    name: "pagination",
+            //    template: "Products/Page{productPage}",
+            //    defaults: new { Controller = "Product", action = "List" });
+            //    routes.MapRoute(
+            //    name: "default",
+            //    template: "{controller=Product}/{action=List}/{id?}");
+            //});
+
+            //When I had changed the string category to genre, I also had to change
+            //or replace the references to that string to genre in the template section of
+            //routes.MapRoute
+            app.UseMvc(routes =>
+            {
                 routes.MapRoute(
-                name: "pagination",
-                template: "Products/Page{productPage}",
-                defaults: new { Controller = "Product", action = "List" });
+                    name: null,
+                    template: "{genre}/Page{productPage:int}",
+                    defaults: new { controller = "Product", action = "List" }
+                );
+
                 routes.MapRoute(
-                name: "default",
-                template: "{controller=Product}/{action=List}/{id?}");
+                    name: null,
+                    template: "Page{productPage:int}",
+                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                );
+
+                routes.MapRoute(
+                    name: null,
+                    template: "{genre}",
+                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                );
+
+                routes.MapRoute(
+                    name: null,
+                    template: "",
+                    defaults: new { controller = "Product", action = "List", productPage = 1 }
+                );
+
+                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
             });
             //Send the app object to the ensure populated method.
             //This whill check to see if there is data in the database, if
