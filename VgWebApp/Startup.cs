@@ -35,8 +35,13 @@ namespace VgWebApp
             //Any constructor in the project can not request an IProductRepository
             //and it will be given an object of type EFProductRepository
             services.AddTransient<IProductRepository, EFProductRepository>();
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp)); //NEW
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>(); //NEW
             //this adds the MVC service to the services collection
             services.AddMvc();
+            services.AddMemoryCache(); /* NEW */
+            services.AddSession(); /* NEW */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +54,9 @@ namespace VgWebApp
             app.UseStatusCodePages();
             //This allows static files to be served from wwwroot
             app.UseStaticFiles();
+            //Enables session state for applications
+            app.UseSession();
+
             //This sets the default pad to /Product/List
             //app.UseMvc(routes => {
             //    routes.MapRoute(

@@ -15,5 +15,6 @@ namespace VgWebApp.Data
             : base(options) { }
         //Provides access to Product objects
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

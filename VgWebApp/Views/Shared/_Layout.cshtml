@@ -9,11 +9,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
             crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Video Game Store</title>
 </head>
 <body>
     <div class="navbar navbar-inverse bg-inverse" role="navigation">
         <a class="navbar-brand" href="#">Video Game Store</a>
+        <div class="col-4 text-right">
+            @await Component.InvokeAsync("CartSummary")
+        </div>
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
