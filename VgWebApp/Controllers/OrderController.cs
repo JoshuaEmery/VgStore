@@ -18,7 +18,7 @@ namespace VgWebApp.Controllers
             cart = cartService;
         }
         public ViewResult List() =>
-            View(repository.Orders.Where(o => !o.Shipped));\
+            View(repository.Orders.Where(o => !o.Shipped));
         [HttpPost]
         public IActionResult MarkShipped(int orderID)
         {
