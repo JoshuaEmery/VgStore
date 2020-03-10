@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VgWebApp.Data;
+using System.Linq;
 
 namespace VgWebApp.Controllers
 {
@@ -11,6 +12,9 @@ namespace VgWebApp.Controllers
         {
             repository = repo;
         }
+        public ViewResult Edit(int productId) =>
+            View(repository.Products
+                .FirstOrDefault(p => p.ProductID == productId));
 
         public ViewResult Index() => View(repository.Products);
     }
