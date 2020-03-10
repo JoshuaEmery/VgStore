@@ -33,5 +33,7 @@ namespace VgWebApp.Controllers
         }
 
         public ViewResult Index() => View(repository.Products);
+        public ViewResult Create() => View("Edit", new Product());
+
     }
 }
