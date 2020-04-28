@@ -2,9 +2,13 @@
 using VgWebApp.Data;
 using System.Linq;
 using VgWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VgWebApp.Controllers
 {
+    //Applying the authorize attribute to the controller class
+    //applies the authorization policy to all the action methods contained
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductRepository repository;

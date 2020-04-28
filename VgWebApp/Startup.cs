@@ -10,6 +10,7 @@ using VgWebApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using VgWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace VgWebApp
 {
@@ -32,6 +33,19 @@ namespace VgWebApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["Data:VgStoreProducts:ConnectionString"]));
+
+            services.AddDbContext<AppIdentityDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration["Data:VgStoreIdentity:ConnectionString"]));
+
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
+
+
+
             //Any constructor in the project can not request an IProductRepository
             //and it will be given an object of type EFProductRepository
             services.AddTransient<IProductRepository, EFProductRepository>();
@@ -56,6 +70,9 @@ namespace VgWebApp
             app.UseStaticFiles();
             //Enables session state for applications
             app.UseSession();
+
+            app.UseAuthentication();
+
 
             //This sets the default pad to /Product/List
             //app.UseMvc(routes => {
@@ -103,6 +120,8 @@ namespace VgWebApp
             //This whill check to see if there is data in the database, if
             //not then it will seed it with data
             SeedData.EnsurePopulated(app);
+            //Ensures that the Identity database is seeded when the application starts
+            IdentitySeedData.EnsurePopulated(app);
         }
     }
 }
